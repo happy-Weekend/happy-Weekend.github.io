@@ -80,10 +80,18 @@
 	d.setHours(18, 0, 0, 0);
 	//获得今天与星期五的日差
 	let week;
-	if (d.getDay == 5 && d.getHours >= 18){
+	var title = document.getElementById("title");
+	console.log("day:" + d.getDay() );
+	console.log("getHours:" + d.getHours() );
+	if (d.getDay() == 5 && d.getHours() >= 18){
 		week = 12 - (d.getDay() ? d.getDay() : 7);
-	}else if(d.getDay > 5){
+		title.innerHTML = "尽情享受您的周末时光吧！<br>距离下一次快乐周末还有";
+	}else if(d.getDay() > 5){
 		week = 12 - (d.getDay() ? d.getDay() : 7);
+		title.innerHTML = "尽情享受您的周末时光吧！<br>距离下一次快乐周末还有";
+	}else if(d.getDay() == 1){
+		week = 5 - (d.getDay() ? d.getDay() : 7);
+		title.innerHTML = "又是他娘的周一！<br>距离下一次快乐周末还有";
 	}
 	else{
 		week = 5 - (d.getDay() ? d.getDay() : 7);
