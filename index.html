@@ -64,13 +64,14 @@
 	//设置时间为下午18:00:00
 	d.setHours(18, 0, 0, 0);
 	//获得今天与星期五的日差
+	let week;
 	if (d.getDay == 5 && d.getHours >= 18){
-		let week = 12 - (d.getDay() ? d.getDay() : 7);
+		week = 12 - (d.getDay() ? d.getDay() : 7);
 	}else if(d.getDay > 5){
-		let week = 12 - (d.getDay() ? d.getDay() : 7);
+		week = 12 - (d.getDay() ? d.getDay() : 7);
 	}
 	else{
-		let week = 5 - (d.getDay() ? d.getDay() : 7);
+		week = 5 - (d.getDay() ? d.getDay() : 7);
 	}
 	let result = d.getTime() + week * 86400000 ;
 	time_end = result;
