@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>农历春节倒计时</title>
+<title>快乐周末倒计时</title>
 <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.css" rel="stylesheet">
 
 <style>
@@ -61,20 +61,19 @@
 	
 	//获得今天日期时间
 	let d = new Date();
-	//设置时间为下午16:00:00
+	//设置时间为下午18:00:00
 	d.setHours(18, 0, 0, 0);
 	//获得今天与星期五的日差
-	let week = 5 - (d.getDay() ? d.getDay() : 7);
-	//今天下午16:00:00的时间戳 加上今天与周五的日差秒数得到结果时间戳
+	if (d.getDay == 5 && d.getHours >= 18){
+		let week = 12 - (d.getDay() ? d.getDay() : 7);
+	}else if(d.getDay > 5){
+		let week = 12 - (d.getDay() ? d.getDay() : 7);
+	}
+	else{
+		let week = 5 - (d.getDay() ? d.getDay() : 7);
+	}
 	let result = d.getTime() + week * 86400000 ;
-
-	//结束时间
-	// time_end=new Date("2020/2/16 00:00:00");
-
-	// time_end=time_end.getTime();
 	time_end = result;
-
-	//开始的时间:如果不填入时间日期默认为当前的日期时间
 	time_now_server=new Date;
 
 	time_now_server=time_now_server.getTime();
