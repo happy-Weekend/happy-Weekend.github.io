@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>农历春节倒计时</title>
+<link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.css" rel="stylesheet">
+
+<style>
+	
+	.bg {
+		width: 100%;
+		height: 768px;
+		background: url(http://cdn.attach.qdfuns.com/notes/pics/201801/26/135951pwiledxs5ea353w8.jpg);
+		background-size: 100%;
+		background-repeat: no-repeat;
+		margin: 0 auto;
+		padding-top: 5%;
+	}
+	#timer {
+		font-size:6vw; 
+		text-align:center; 
+		font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif;
+		text-shadow:0 0 5px #00c6ff;
+		width: 75%;
+		margin: 0 auto;
+		color: yellow;
+		transition: all linear 1s;
+	}
+	#yu {
+		font-size:5em; 
+		text-align:center; 
+		font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif; 
+		text-shadow:0 0 5px #00c6ff; 
+		background: url(http://cdn.attach.qdfuns.com/notes/pics/201801/26/135951htuf0wbib6y61fzm.png);
+		background-size: 100%;
+		height: 50%;
+		width: 75%;
+		background-repeat: no-repeat;
+		margin: 0 auto;
+		margin-top: 3%;
+	}
+</style>
+</head>
+  
+<body>
+	<div class="bg">
+
+		<div id="timer" ></div>
+	  
+		<div id="yu" class="animated rollIn" style="animation-delay: 1s"></div>
+
+		
+
+	</div>
+	<audio autoplay="autoplay" loop="loop" src="http://sc1.111ttt.cn:8282/2016/1/12m/10/205102140160.m4a?tflag=1516942801&pin=1ee0d9b5cf59340290bbb29ba508960c#.mp3" >你的浏览器不支持audio标签。</audio>
+
+<script type="text/javascript">
+  
+  
+	var time_now_server,time_now_client,time_end,time_server_client,timerID;
+	
+	//获得今天日期时间
+	let d = new Date();
+	//设置时间为下午16:00:00
+	d.setHours(18, 0, 0, 0);
+	//获得今天与星期五的日差
+	let week = 5 - (d.getDay() ? d.getDay() : 7);
+	//今天下午16:00:00的时间戳 加上今天与周五的日差秒数得到结果时间戳
+	let result = d.getTime() + week * 86400000 ;
+
+	//结束时间
+	// time_end=new Date("2020/2/16 00:00:00");
+
+	// time_end=time_end.getTime();
+	time_end = result;
+
+	//开始的时间:如果不填入时间日期默认为当前的日期时间
+	time_now_server=new Date;
+
+	time_now_server=time_now_server.getTime();
+	  
+	time_now_client=new Date();
+
+	time_now_client=time_now_client.getTime();
+	  
+	time_server_client=time_now_server-time_now_client;
+	  
+	setTimeout("show_time()",1000);
+	  
+	  
+	//显示时间函数
+	function show_time(){
+
+		var timer = document.getElementById("timer");
+
+		if(!timer){
+
+			return ;
+
+	 	}
+
+	 	timer.innerHTML =time_server_client;
+	  
+		var time_now,time_distance,str_time;
+
+		var int_day,int_hour,int_minute,int_second;
+
+		var time_now=new Date();
+
+		time_now=time_now.getTime()+time_server_client;
+
+		time_distance=time_end-time_now;
+
+	 	if(time_distance>0){
+
+			int_day=Math.floor(time_distance/86400000)
+
+			time_distance-=int_day*86400000;
+
+			int_hour=Math.floor(time_distance/3600000)
+
+			time_distance-=int_hour*3600000;
+
+			int_minute=Math.floor(time_distance/60000)
+
+			time_distance-=int_minute*60000;
+
+			int_second=Math.floor(time_distance/1000)
+	  
+			if(int_hour<10){
+				int_hour="0"+int_hour;
+			}
+			if(int_minute<10){
+				int_minute="0"+int_minute;
+			}
+			if(int_second<10){
+				int_second="0"+int_second;
+			}
+	  
+	 		str_time=int_day+"天"+int_hour+"小时"+int_minute+"分钟"+int_second+"秒";
+
+			timer.innerHTML=str_time;
+
+	 		setTimeout("show_time()",1000);
+	  
+		}else{
+		  
+		 	timer.innerHTML =timer.innerHTML;
+
+		 	clearTimeout(timerID)
+
+		 	window.location.href="http://www.baidu.com";
+
+		}
+
+	}
+	function time(){
+		setInterval(ran,4000);  
+
+		function ran() {
+				var x = Math.floor(Math.random() * (255 - 0 + 1) + 0);
+				var y = Math.floor(Math.random() * (255 - 0 + 1) + 0);
+				var z = Math.floor(Math.random() * (255 - 0 + 1) + 0);
+				var color = "rgb(" + x + "," + y + "," + z + ")";     			
+				document.getElementById("timer").style.color=color;			   				
+		}
+	};
+	//time();
+</script>
+</body>
+</html>
