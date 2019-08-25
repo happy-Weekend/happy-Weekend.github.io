@@ -82,11 +82,13 @@
 	let week;
 	var title = document.getElementById("title");
 	console.log("day:" + d.getDay() );
-	console.log("getHours:" + d.getHours() );
-	if (d.getDay() == 5 && d.getHours() > 18){
+    
+	console.log("getHours:" + new Date().getHours() );
+    
+	if (d.getDay() == 5 && new Date().getHours() >= 18){
 		week = 12 - (d.getDay() ? d.getDay() : 7);
 		title.innerHTML = "尽情享受您的周末时光吧！<br>距离下一次快乐周末还有";
-	}else if(d.getDay() > 5){
+	}else if(d.getDay() > 5 || d.getDay() == 0){
 		week = 12 - (d.getDay() ? d.getDay() : 7);
 		title.innerHTML = "尽情享受您的周末时光吧！<br>距离下一次快乐周末还有";
 	}else if(d.getDay() == 1){
